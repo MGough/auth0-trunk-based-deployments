@@ -7,5 +7,5 @@
     "smtp_pass": "##SMTP_PASS##"
   },
   "name": "smtp",
-  "default_from_address": "someemail@example.com"
+  "default_from_address": "##EMAIL_FROM_ADDRESS##"
 }
