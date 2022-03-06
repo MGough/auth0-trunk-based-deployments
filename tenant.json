@@ -1,0 +1,23 @@
+{
+  "default_audience": "",
+  "default_directory": "",
+  "device_flow": {
+    "charset": "base20",
+    "mask": "****-****"
+  },
+  "enabled_locales": [
+    "en"
+  ],
+  "flags": {
+    "new_universal_login_experience_enabled": false,
+    "universal_login": false,
+    "dashboard_ui_next": true,
+    "disable_clickjack_protection_headers": false
+  },
+  "universal_login": {
+    "colors": {
+      "page_background": "#000000",
+      "primary": "#ea5323"
+    }
+  }
+}

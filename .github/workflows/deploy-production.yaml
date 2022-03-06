@@ -1,0 +1,15 @@
+name: Deploy Production
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/template-auth0-deploy.yaml
+    with:
+      environment: production
+      git_tag: main
+    secrets:
+      auth0_client_id: ${{ secrets.AUTH0_CLIENT_ID }}
+      auth0_client_secret: ${{ secrets.AUTH0_CLIENT_SECRET }}
+      # Example of a secret being passed into the deploy-cli
+      smtp_password: ${{ secrets.SMTP_PASSWORD }}

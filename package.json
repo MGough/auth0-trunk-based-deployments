@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "download:staging": "a0deploy export --strip -f directory --output_folder . --config_file ./environment_configs/staging.json",
+    "import:staging": "a0deploy import -c environment_configs/staging.json -i .",
+    "import:production": "a0deploy import -c environment_configs/production.json -i ."
+  },
+  "dependencies": {
+    "auth0-deploy-cli": "^7.4.0"
+  }
+}

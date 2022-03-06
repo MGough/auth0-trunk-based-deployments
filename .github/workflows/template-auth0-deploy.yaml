@@ -1,0 +1,50 @@
+on:
+  workflow_call:
+    inputs:
+      git_tag:
+        description: "The branch, tag or SHA to checkout"
+        required: true
+        type: string
+      environment:
+        description: "environment/tenant that is being deployed: staging | production"
+        required: true
+        type: string
+    secrets:
+      auth0_client_id:
+        required: true
+      auth0_client_secret:
+        required: true
+      # Example of a secret being passed into the deploy-cli
+      smtp_password:
+        required: true
+
+jobs:
+  deploy-auth0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # This allows us to use environment secrets/approvals
+    # https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment
+    environment: ${{ inputs.environment }}
+
+    steps:
+      # As this is a template, we need to ensure we checkout the right branch
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.git_tag }}
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile  
+
+      - name: Update Auth0 tenant
+        run: yarn import:${{ inputs.environment }}
+        env:
+          # We can provide secrets as environment variables
+          # This includes keywords that we want to map
+          AUTH0_CLIENT_ID: ${{ secrets.auth0_client_id }}
+          AUTH0_CLIENT_SECRET: ${{ secrets.auth0_client_secret }}
+          SMTP_PASS: ${{ secrets.smtp_password }}

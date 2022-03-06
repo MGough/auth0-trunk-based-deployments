@@ -1,0 +1,12 @@
+{
+    "AUTH0_DOMAIN": "iammerlin.eu.auth0.com",
+    "AUTH0_ALLOW_DELETE": true,
+    "AUTH0_KEYWORD_REPLACE_MAPPINGS": { 
+        "AUTH0_TENANT_NAME": "iammerlin",
+        "EMAIL_FROM_ADDRESS": "noreply@mail.example.com"
+    },
+    "EXCLUDED_PROPS": {
+      "clients": ["client_secret"],
+      "connections": ["options.client_secret"]
+    }
+}

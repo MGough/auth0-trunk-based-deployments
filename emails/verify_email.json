@@ -1,0 +1,10 @@
+{
+  "syntax": "liquid",
+  "body": "./verify_email.html",
+  "from": "{{ application.name }} <support@example.com>",
+  "subject": "Verify email for access to {{ application.name }}!",
+  "resultUrl": "zombo.com",
+  "urlLifetimeInSeconds": 432000,
+  "template": "verify_email",
+  "enabled": true
+}
